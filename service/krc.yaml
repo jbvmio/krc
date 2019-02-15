@@ -1,0 +1,37 @@
+dataDir: "./krcdb"
+dedicatedTopic: "krc.check.topic"
+localBrokers:
+- local-dc01-kafka01:9092
+- local-dc01-kafka02:9092
+- local-dc01-kafka03:9092
+- local-dc01-kafka04:9092
+- local-dc01-kafka05:9092
+remoteBrokers:
+- remote-dc-kafka01:9092
+- remote-dc-kafka02:9092
+- remote-dc-kafka03:9092
+- remote-dc-kafka04:9092
+- remote-dc-kafka05:9092
+peerBrokers:
+- local-dc02-kafka01:9092
+- local-dc02-kafka02:9092
+- local-dc02-kafka03:9092
+- local-dc02-kafka04:9092
+- local-dc02-kafka05:9092
+localBootstrap:
+remoteBootstrap:
+checkKey: KRC_
+checkInterval: 10m
+retryInterval: 20s
+updateInterval: 90m
+timeout: 15s
+minOffset: 100
+blacklistRegex: "_.*|^connect-.*"
+whitelistRegex: "^important.topic$"
+whitelist:
+- whitelisted.topic
+- my.topic.here
+blacklist:
+- __consumer_offsets
+- helloworld
+apiEndpoint: ":8080"
